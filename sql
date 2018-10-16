@@ -1,3 +1,25 @@
+
+# https://leetcode.com/problems/department-highest-salary/description/
+
+
+
+SELECT final.Salary, Final.Employee, Department.Name as Department
+FROM 
+    (SELECT mx.DepartmentID , Employee.Name as Employee, Employee.Salary as Salary
+    FROM 
+    (    (Select Max(Salary) as Salary, DepartmentID
+            FROM Employee
+        GROUP BY DepartmentID)) as mx
+    LEFT JOIN Employee 
+          on Employee.DepartmentID = mx.DepartmentID
+    WHERE mx.Salary = Employee.Salary) as final
+JOIN 
+    Department 
+    ON 
+    final.DepartmentID = Department.Id
+
+
+
 /* 
 https://www.hackerrank.com/challenges/the-pads/problem
 
