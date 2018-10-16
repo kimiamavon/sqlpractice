@@ -1,4 +1,10 @@
 
+    (SELECT Name
+          (CASE WHEN Occupation='Doctor'
+            THEN Name ELSE NULL END) AS Doctor
+      FROM Occupations) 
+
+
 # https://leetcode.com/problems/department-highest-salary/description/
 
 
